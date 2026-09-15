@@ -1,0 +1,10 @@
+{
+  "variantName": "hero-overlay",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Shallow full-width hero with a background photograph, a 50% dark overlay, an accent bar, a large heading, and one or more CTA buttons. Text is left-aligned and reversed (light on dark).",
+  "contentPattern": "1 row / 1 column containing a background image (picture), a heading, an optional paragraph, and CTA links.",
+  "usage": "Page-top hero banner for landing/FAQ pages with a photographic background and calls to action.",
+  "options": [],
+  "memberVariantIds": ["hero-overlay"]
+}

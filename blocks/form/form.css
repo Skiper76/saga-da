@@ -1,0 +1,191 @@
+/* Block: form — Saga newsletter signup.
+   Values extracted from source computed styles (saga.co.uk newsletter panel). */
+
+/* Outer teal panel (.form-subscribe) */
+.form.block {
+  background-color: #aad7d7;
+  border-radius: 8px 8px 0 0;
+  padding: 24px 16px;
+}
+
+/* White inner card (.form-subscribe__content-wrapper) */
+.form .form-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 24px 20px;
+}
+
+/* Heading with left accent bar (.form-subscribe__title.accent--sky) */
+.form .form-intro h1,
+.form .form-intro h2,
+.form .form-intro h3 {
+  position: relative;
+  margin: 0 0 16px;
+  padding-left: 32px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--brand-blue);
+}
+
+.form .form-intro h1::before,
+.form .form-intro h2::before,
+.form .form-intro h3::before {
+  content: "";
+  position: absolute;
+  top: 0.1em;
+  left: 0;
+  width: 16px;
+  height: 0.9em;
+  border-radius: 4px;
+  background-color: #00a5e1;
+}
+
+/* Intro description */
+.form .form-intro p {
+  margin: 0 0 16px;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--text-color);
+}
+
+/* Form layout — mobile first (stacked) */
+.form form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+}
+
+.form-row-names,
+.form-row-submit {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Inputs */
+.form .form-field {
+  flex: 1;
+}
+
+.form .form-field input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 56px;
+  padding: 18px 16px 14px;
+  border: 1px solid var(--brand-blue);
+  border-radius: 4px;
+  background-color: #f6fbfb;
+  color: var(--brand-blue);
+  font-size: 18px;
+  font-family: var(--body-font-family);
+  line-height: 1;
+}
+
+.form .form-field input::placeholder {
+  color: var(--brand-blue);
+  opacity: 0.85;
+}
+
+.form .form-field input:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 1px;
+}
+
+/* Submit button — reset EDS auto-decoration and match source */
+.form .form-submit {
+  display: flex;
+}
+
+.form .form-submit .button,
+.form button.button {
+  box-sizing: border-box;
+  width: 100%;
+  height: 56px;
+  margin: 0;
+  border: 3px solid transparent;
+  border-radius: 4px;
+  padding: 15px 32px;
+  background-color: var(--brand-blue);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.form .form-submit .button:hover,
+.form .form-submit .button:focus-visible {
+  background-color: var(--brand-blue-dark);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* Privacy note below the form */
+.form .form-note {
+  margin-top: 16px;
+}
+
+.form .form-note p {
+  margin: 0 0 16px;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--text-color);
+}
+
+.form .form-note p:last-child {
+  margin-bottom: 0;
+}
+
+.form .form-note a:any-link {
+  color: var(--brand-blue);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+/* Desktop layout */
+@media (width >= 900px) {
+  .form.block {
+    padding: 40px;
+  }
+
+  .form .form-card {
+    padding: 32px;
+  }
+
+  .form .form-intro h1,
+  .form .form-intro h2,
+  .form .form-intro h3 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  /* First name + Last name side by side */
+  .form-row-names {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  /* Email + Sign up as an attached bar */
+  .form-row-submit {
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .form-row-submit .form-field input {
+    border-radius: 4px 0 0 4px;
+    border-right: 0;
+  }
+
+  .form-row-submit .form-submit {
+    flex: 0 0 auto;
+  }
+
+  .form-row-submit .form-submit .button {
+    width: auto;
+    height: 56px;
+    border-radius: 0 4px 4px 0;
+  }
+}

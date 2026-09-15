@@ -1,0 +1,11 @@
+{
+  "type": "da",
+  "sites": {
+    "saga-da": {
+      "previewOrg": "skiper76",
+      "previewSite": "saga-da",
+      "contentHostUrl": "https://content.da.live/skiper76/saga-da/",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

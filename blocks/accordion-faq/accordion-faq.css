@@ -1,0 +1,100 @@
+/*
+ * accordion-faq — stacked expandable FAQ Q&A items.
+ * Values extracted from source computed styles (.accordion.accordion--stacked
+ * on saga.co.uk/car-insurance/faqs). Built on native <details>/<summary>.
+ * Decorated DOM:
+ *   .accordion-faq > details.accordion-faq-item
+ *     > summary.accordion-faq-item-label (contains a <p> with the question)
+ *     > div.accordion-faq-item-body (answer paragraphs)
+ */
+
+/* accordion item card */
+.accordion-faq .accordion-faq-item {
+  margin-bottom: 8px;
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+}
+
+/* clickable question header */
+.accordion-faq .accordion-faq-item-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 32px;
+  cursor: pointer;
+  list-style: none;
+  color: var(--brand-blue);
+  font-family: var(--heading-font-family);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.accordion-faq .accordion-faq-item-label::-webkit-details-marker {
+  display: none;
+}
+
+/* question text (wrapped in a <p> by EDS decoration) */
+.accordion-faq .accordion-faq-item-label p {
+  margin: 0;
+  color: var(--brand-blue);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+/* chevron toggle — points down when closed */
+.accordion-faq .accordion-faq-item-label::after {
+  content: '';
+  flex: 0 0 auto;
+  width: 11px;
+  height: 11px;
+  border: solid var(--brand-blue);
+  border-width: 0 2px 2px 0;
+  transform: translateY(-3px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+/* chevron points up when open */
+.accordion-faq .accordion-faq-item[open] .accordion-faq-item-label::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+/* answer body */
+.accordion-faq .accordion-faq-item-body {
+  padding: 0 32px 24px;
+  color: var(--text-color);
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.accordion-faq .accordion-faq-item-body p {
+  margin: 0 0 16px;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--text-color);
+}
+
+.accordion-faq .accordion-faq-item-body ul {
+  margin: 0 0 16px;
+  padding-left: 20px;
+}
+
+.accordion-faq .accordion-faq-item-body li {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.accordion-faq .accordion-faq-item-body p:last-child,
+.accordion-faq .accordion-faq-item-body ul:last-child {
+  margin-bottom: 0;
+}
+
+/* answer links — dark body text, underlined (matches source) */
+.accordion-faq .accordion-faq-item-body a:any-link {
+  color: var(--text-color);
+  font-weight: 500;
+  text-decoration: underline;
+}

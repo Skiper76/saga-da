@@ -1,0 +1,10 @@
+{
+  "variantName": "anchor-nav",
+  "baseBlock": "anchor-nav",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "A horizontal, sticky in-page jump-navigation bar of pill-shaped links. Scrolls horizontally on mobile, wraps and centers on desktop. Clicking a link smooth-scrolls to the matching in-page anchor.",
+  "contentPattern": "A list of links, each pointing to an in-page anchor (e.g. 'My car cover' -> #anchor_Mycarcover), plus an optional 'Back to top' link.",
+  "usage": "In-page category jump navigation for long pages such as FAQ or guide pages.",
+  "options": [],
+  "memberVariantIds": ["anchor-nav"]
+}

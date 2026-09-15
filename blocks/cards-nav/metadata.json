@@ -1,0 +1,10 @@
+{
+  "variantName": "cards-nav",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Grid of navigation tiles (4x2 on desktop), each with a small icon, title, short description, and a dark CTA button. 2-up on mobile, 4-up on desktop.",
+  "contentPattern": "One row per tile. Optional icon cell (small picture) + body cell (title + description + CTA link).",
+  "usage": "Primary navigation/directory grid linking to key sections of the site.",
+  "options": [],
+  "memberVariantIds": ["cards-nav"]
+}

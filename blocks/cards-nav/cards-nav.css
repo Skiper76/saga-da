@@ -1,0 +1,116 @@
+/* cards-nav — navigation tile grid on a light teal band.
+   Values extracted from source .nav-tiles / .nav-tiles__tile computed styles. */
+
+/* Full-bleed light-teal section band (source .nav-tiles background). */
+main .section.cards-nav-container {
+  margin: 0;
+  padding: 32px 0 64px;
+  background-color: rgb(229 243 243);
+}
+
+/* Tile grid (source .nav-tiles__container: flex-wrap, 16px gap, 4-up desktop). */
+.cards-nav > ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Tile card (source .nav-tiles__tile). */
+.cards-nav > ul > li {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+/* Icon cell (source .nav-tiles__icon: 36px blue glyph). */
+.cards-nav-icon {
+  margin-bottom: 16px;
+  line-height: 0;
+}
+
+.cards-nav-icon:empty {
+  display: none;
+}
+
+.cards-nav-icon img,
+.cards-nav-icon svg {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  color: var(--brand-blue);
+  fill: var(--brand-blue);
+}
+
+/* Body cell fills remaining height so CTAs align across tiles. */
+.cards-nav-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+/* Title (source .nav-tiles__title: 24px/28px, weight 500, text colour — not blue). */
+.cards-nav-body h2,
+.cards-nav-body h3,
+.cards-nav-body h4 {
+  margin: 0 0 26px;
+  font-family: var(--heading-font-family);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  color: var(--text-color);
+}
+
+/* Description (source .nav-tiles__body: 18px/27px). */
+.cards-nav-body p {
+  margin: 0 0 16px;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  color: var(--text-color);
+}
+
+/* CTA: full-width dark button (source .button--dark.nav-tiles__cta).
+   Push to the bottom of the tile for a consistent baseline. */
+.cards-nav-body p:last-child {
+  margin: auto 0 0;
+}
+
+.cards-nav-body a {
+  display: block;
+  padding: 19px 24px 16px;
+  background-color: var(--brand-blue);
+  border-radius: 10px;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.cards-nav-body a:hover,
+.cards-nav-body a:focus-visible {
+  background-color: var(--brand-blue-dark);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Trailing "See more" link beneath the grid. */
+.cards-nav-more {
+  margin: 24px 0 0;
+  text-align: center;
+}
+
+@media (width >= 900px) {
+  .cards-nav > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

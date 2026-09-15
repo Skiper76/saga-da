@@ -1,0 +1,10 @@
+{
+  "variantName": "accordion-faq",
+  "baseBlock": "accordion",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "A stacked list of expandable FAQ items. Each item shows a bold question with a chevron; clicking expands to reveal the answer. Uses native details/summary for accessibility.",
+  "contentPattern": "One row per Q&A pair: [question label | answer body].",
+  "usage": "Frequently-asked-questions groups; multiple instances per page for categorized FAQs.",
+  "options": [],
+  "memberVariantIds": ["accordion-faq"]
+}

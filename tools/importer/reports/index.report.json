@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.saga.co.uk/",
+  "path": "index",
+  "timestamp": "2026-09-14T14:51:05.721Z",
+  "title": "Welcome to Saga – Over 50s insurance, holidays and money",
+  "template": "home",
+  "blocks": [
+    "cards-promo",
+    "cards-nav",
+    "cards-nav",
+    "cards-feature",
+    "cards-article",
+    "cards-award",
+    "form",
+    "columns-anniversary"
+  ]
+}

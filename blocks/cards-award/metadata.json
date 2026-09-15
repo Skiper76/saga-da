@@ -1,0 +1,10 @@
+{
+  "variantName": "cards-award",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "A centered, wrapping row of award/trust logo badges (e.g. Which? Best Buy, British Travel Awards), each with a small caption underneath. Compact, contain-fit logos.",
+  "contentPattern": "One row per badge. Image cell (logo picture only) + optional body cell (short caption).",
+  "usage": "Trust/awards strip showcasing accreditations and award logos.",
+  "options": [],
+  "memberVariantIds": ["cards-award"]
+}

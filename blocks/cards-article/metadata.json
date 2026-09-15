@@ -1,0 +1,10 @@
+{
+  "variantName": "cards-article",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "A 4-up grid of article cards, each with an image, a small uppercase tag label (e.g. ARTICLE), and a linked title. 2-up on mobile, 4-up on desktop. Card-feed styling distinct from promo/nav cards.",
+  "contentPattern": "One row per article. Image cell (picture only) + body cell (tag label paragraph + linked title).",
+  "usage": "Latest-articles / editorial feed linking to content pages.",
+  "options": [],
+  "memberVariantIds": ["cards-article"]
+}

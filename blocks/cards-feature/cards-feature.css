@@ -1,0 +1,113 @@
+/* cards-feature — large 2-up feature promo pods (Saga campaign pods).
+ * Values extracted from source computed styles (see migration-work/cards-feature-extracted.css).
+ * Decorated DOM: .cards-feature > ul > li > (.cards-feature-image + .cards-feature-body)
+ */
+
+.cards-feature > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cards-feature > ul > li {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* alternating panel colours (lilac, aqua) repeating every 2 pods */
+.cards-feature > ul > li:nth-child(odd) {
+  background-color: rgb(214 192 220);
+}
+
+.cards-feature > ul > li:nth-child(even) {
+  background-color: rgb(128 210 240);
+}
+
+/* image */
+.cards-feature-image {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.cards-feature-image img {
+  width: 100%;
+  aspect-ratio: 608 / 259;
+  object-fit: cover;
+  object-position: 50% 50%;
+  display: block;
+}
+
+/* contents */
+.cards-feature-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-start;
+  padding: 0 24px 32px;
+}
+
+.cards-feature-body h2,
+.cards-feature-body h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 26.25px;
+  color: var(--brand-blue);
+  text-transform: uppercase;
+}
+
+.cards-feature-body p {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-color);
+}
+
+.cards-feature-body p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* CTA — EDS decorates <p><a> into a.button inside .button-container.
+ * Push it to the bottom of the pod and match the source pill styling. */
+.cards-feature-body .button-container {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+main .cards-feature a.button:any-link {
+  margin: 0;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  padding: 19px 24px 16px;
+  background-color: var(--brand-blue);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.27px;
+  text-transform: none;
+  white-space: normal;
+}
+
+main .cards-feature a.button:any-link:hover,
+main .cards-feature a.button:any-link:focus-visible {
+  border-color: transparent;
+  background-color: var(--brand-blue-dark);
+  color: #fff;
+}
+
+@media (width >= 900px) {
+  .cards-feature > ul {
+    flex-direction: row;
+  }
+
+  .cards-feature > ul > li {
+    flex: 1;
+  }
+}

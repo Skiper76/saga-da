@@ -1,0 +1,206 @@
+/*
+ * carousel-product — Saga product-card carousel.
+ * Values extracted from source computed styles (.card-carousel on saga.co.uk).
+ * Card: white, 1px #d4d4d4 border, 8px radius; image on top (3:2); teal badge;
+ * brand-blue title; ~4 cards per view on desktop; circular arrows top-right.
+ */
+
+.carousel-product {
+  position: relative;
+  padding-top: 72px; /* space for the top-right navigation arrows */
+}
+
+.carousel-product .carousel-product-slides-container {
+  position: static;
+}
+
+/* hide any stray non-slide content left as direct children of the block
+   (e.g. chat-widget text scraped into the source markup) */
+.carousel-product > p {
+  display: none;
+}
+
+.carousel-product .carousel-product-slides,
+.carousel-product .carousel-product-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-product .carousel-product-slides {
+  display: flex;
+  gap: 16px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+}
+
+.carousel-product .carousel-product-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* product card slide: image on top, content below; equal-height cards */
+.carousel-product .carousel-product-slide {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #fff;
+  border: 1px solid rgb(212 212 212);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-image {
+  line-height: 0;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-image p {
+  margin: 0;
+  line-height: 0;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-image img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 24px 32px;
+}
+
+/* "Product information" badge */
+.carousel-product .carousel-product-slide-content p:first-child {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 16px;
+  padding: 8px 16px 6px;
+  border-radius: 8px;
+  background-color: rgb(170 215 215);
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.carousel-product .carousel-product-slide-content h2,
+.carousel-product .carousel-product-slide-content h3,
+.carousel-product .carousel-product-slide-content h4 {
+  margin: 0 0 12px;
+  font-family: var(--heading-font-family);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  color: var(--brand-blue);
+  text-transform: none;
+}
+
+.carousel-product .carousel-product-slide-content h2 a:any-link,
+.carousel-product .carousel-product-slide-content h3 a:any-link,
+.carousel-product .carousel-product-slide-content h4 a:any-link {
+  color: var(--brand-blue);
+  font: inherit;
+  text-decoration: none;
+}
+
+.carousel-product .carousel-product-slide-content h2 a:any-link:hover,
+.carousel-product .carousel-product-slide-content h3 a:any-link:hover,
+.carousel-product .carousel-product-slide-content h4 a:any-link:hover {
+  text-decoration: underline;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-product .carousel-product-slide-content p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--text-color);
+}
+
+/* description link (non-badge, non-title) */
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-product .carousel-product-slide-content p a:any-link {
+  color: var(--link-color);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/* source uses arrows + a text counter, not dots — hide the dot indicators */
+.carousel-product .carousel-product-slide-indicators {
+  display: none;
+}
+
+/* circular navigation arrows, top-right */
+.carousel-product .carousel-product-navigation-buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 1;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-product .carousel-product-navigation-buttons button {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid rgb(212 212 212);
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.carousel-product .carousel-product-navigation-buttons button:hover,
+.carousel-product .carousel-product-navigation-buttons button:focus-visible {
+  border-color: var(--brand-blue);
+  background-color: var(--brand-blue);
+}
+
+.carousel-product .carousel-product-navigation-buttons button::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--brand-blue);
+  border-bottom: 0;
+  border-left: 0;
+  transform: translate(-50%, -50%) rotate(-135deg);
+  transition: border-color 0.2s;
+}
+
+.carousel-product .carousel-product-navigation-buttons button.slide-next::after {
+  left: calc(50% - 2px);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.carousel-product .carousel-product-navigation-buttons button:hover::after,
+.carousel-product .carousel-product-navigation-buttons button:focus-visible::after {
+  border-color: #fff;
+}
+
+@media (width >= 600px) {
+  .carousel-product .carousel-product-slide {
+    flex: 0 0 calc((100% - 16px) / 2);
+  }
+}
+
+@media (width >= 900px) {
+  .carousel-product .carousel-product-slide {
+    flex: 0 0 calc((100% - 48px) / 4);
+  }
+}

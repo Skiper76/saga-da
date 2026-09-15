@@ -1,0 +1,100 @@
+/* cards-promo — a row of promotional pods (source: .campaign-pods on saga.co.uk).
+ * Values extracted from source computed styles. Each pod is a coloured panel with
+ * a banner image, uppercase heading, description and a single CTA button.
+ */
+
+.cards-promo > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* pod */
+.cards-promo > ul > li {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #232323;
+}
+
+/* the three colours cycle across the pods (exact source computed values) */
+.cards-promo > ul > li:nth-child(3n + 1) { background-color: #80d2f0; }
+.cards-promo > ul > li:nth-child(3n + 2) { background-color: #fbb175; }
+.cards-promo > ul > li:nth-child(3n + 3) { background-color: #d6c0dc; }
+
+/* banner image */
+.cards-promo-image {
+  line-height: 0;
+  margin-bottom: 24px;
+}
+
+.cards-promo-image img {
+  width: 100%;
+  aspect-ratio: 400 / 170;
+  object-fit: cover;
+  display: block;
+}
+
+/* text body */
+.cards-promo-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0 24px 32px;
+}
+
+.cards-promo-body h2,
+.cards-promo-body h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 26.25px;
+  text-transform: uppercase;
+  color: #1e3282;
+}
+
+.cards-promo-body p {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #232323;
+}
+
+/* push the CTA to the bottom so buttons align across pods of unequal text */
+.cards-promo-body .button-container {
+  margin: 0;
+  margin-top: auto;
+}
+
+/* CTA button — override the global pill button to match the source pod button */
+main .cards-promo a.button:any-link {
+  display: inline-block;
+  margin: 0;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  padding: 19px 24px 16px;
+  background-color: #1e3282;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+main .cards-promo a.button:any-link:hover,
+main .cards-promo a.button:any-link:focus-visible {
+  background-color: #14225a;
+  border-color: transparent;
+  color: #fff;
+}
+
+@media (width >= 900px) {
+  .cards-promo > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

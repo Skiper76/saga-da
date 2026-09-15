@@ -1,0 +1,15 @@
+{
+  "variantName": "form",
+  "baseBlock": "form",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "A newsletter/signup form in a bordered panel: optional intro heading/description, text inputs (first name, last name, email) laid out in a responsive grid, and a submit button. Privacy note below.",
+  "contentPattern": "One row per element. field rows: [field | label | input-type]; submit row: [submit | button label]; other rows render as intro rich text.",
+  "usage": "Newsletter subscription / lead-capture signup form.",
+  "options": [],
+  "memberVariantIds": ["form"],
+  "usage": {
+    "pagesUsing": ["/car-insurance/faqs"],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-14T14:54:00.000Z"
+  }
+}

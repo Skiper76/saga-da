@@ -1,4 +1,3 @@
-import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
@@ -113,10 +112,11 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  // load nav as fragment
-  const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
-  const fragment = await loadFragment(navPath);
+  // load nav as fragment — metadata-independent dual-fetch:
+  // /content/nav (localhost / aem up) then /nav (DA/EDS production at site root)
+  let fragment = await loadFragment('/content/nav');
+  if (!fragment) fragment = await loadFragment('/nav');
+  if (!fragment) return;
 
   // decorate nav DOM
   block.textContent = '';
@@ -131,7 +131,7 @@ export default async function decorate(block) {
   });
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
+  const brandLink = navBrand && navBrand.querySelector('.button');
   if (brandLink) {
     brandLink.className = '';
     brandLink.closest('.button-container').className = '';
@@ -141,11 +141,30 @@ export default async function decorate(block) {
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
-      navSection.addEventListener('click', () => {
+      navSection.addEventListener('click', (e) => {
+        // let real links (sub-menu items, category landing links) navigate;
+        // only toggle the panel when the top-level category label is clicked.
+        const topLink = navSection.querySelector(':scope > a');
+        if (e.target.closest('a') && e.target.closest('a') !== topLink) return;
         if (isDesktop.matches) {
+          e.preventDefault();
           const expanded = navSection.getAttribute('aria-expanded') === 'true';
           toggleAllNavSections(navSections);
           navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        }
+      });
+    });
+  }
+
+  // Wrap tools link label text in a <span> so mobile can show icon-only.
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    navTools.querySelectorAll('a').forEach((a) => {
+      [...a.childNodes].forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+          const span = document.createElement('span');
+          span.textContent = node.textContent.trim();
+          node.replaceWith(span);
         }
       });
     });

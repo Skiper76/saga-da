@@ -1,0 +1,10 @@
+{
+  "variantName": "carousel-product",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "A horizontally-scrolling carousel of product cards, showing up to 4 cards per view on desktop (2 on tablet, ~1 on mobile). Each card has an image on top, a tag, title, description, and a link. Prev/next arrows and slide indicators.",
+  "contentPattern": "One row per product card: [image | content (tag + heading + description + link)].",
+  "usage": "'More from Saga' style product/cross-sell carousel showing multiple cards per view with paging controls.",
+  "options": [],
+  "memberVariantIds": ["carousel-product"]
+}

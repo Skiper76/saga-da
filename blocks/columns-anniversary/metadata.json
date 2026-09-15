@@ -1,0 +1,10 @@
+{
+  "variantName": "columns-anniversary",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Full-width decorative anniversary banner: celebratory heading text (e.g. 'Celebrating 75 Years of Saga') with a large numeral and decorative emblem/marble graphics arranged side-by-side. Centered, stacked on mobile; horizontal row on desktop.",
+  "contentPattern": "One row with multiple cells: text cell(s) + decorative image cell(s). Image-only cells become image columns.",
+  "usage": "Decorative brand/anniversary banner spanning the full width.",
+  "options": [],
+  "memberVariantIds": ["columns-anniversary"]
+}

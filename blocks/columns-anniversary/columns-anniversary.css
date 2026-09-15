@@ -1,0 +1,72 @@
+/*
+ * columns-anniversary — full-width decorative anniversary banner.
+ * Source: .anniversary-banner ("CELEBRATING [75 emblem] YEARS OF SAGA").
+ * Values extracted from source computed styles (getComputedStyle).
+ */
+
+/* Center the banner as a full-width row */
+.columns-anniversary > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.columns-anniversary > div > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* The link IS the banner: 3-part inline grid [Celebrating] [75.svg] [years of Saga] */
+.columns-anniversary a:any-link {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-template-columns: auto 68px auto;
+  place-items: center center;
+  gap: 12px;
+  color: var(--brand-blue);            /* rgb(30, 50, 130) */
+  font-family: var(--heading-font-family); /* Ambit */
+  font-size: 20px;                     /* mobile */
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.columns-anniversary a:any-link:hover {
+  color: var(--brand-blue);
+  text-decoration: none;
+}
+
+/* The "75" emblem SVG (source: 100px wide, ~82px tall, object-fit contain) */
+.columns-anniversary img {
+  width: 100%;
+  max-width: 68px;                     /* mobile emblem width */
+  height: auto;
+  object-fit: contain;
+}
+
+.columns-anniversary picture {
+  display: flex;
+  align-items: center;
+}
+
+@media (width >= 900px) {
+  .columns-anniversary a:any-link {
+    grid-template-columns: auto 100px auto;
+    gap: 16px;                         /* source anchor gap */
+    font-size: 29px;                   /* source: 28.9153px */
+  }
+
+  .columns-anniversary img {
+    max-width: 100px;                  /* source img width */
+  }
+
+  .columns-anniversary > div {
+    padding: 0 32px 48px;              /* source block padding-bottom 48px */
+  }
+}

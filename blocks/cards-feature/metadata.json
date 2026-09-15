@@ -1,0 +1,10 @@
+{
+  "variantName": "cards-feature",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Two large promotional pods side-by-side, each with a wide image, heading, description, and CTA button. Stacked on mobile, 2-up on desktop. Larger than cards-promo.",
+  "contentPattern": "One row per pod (typically 2). Image cell (picture only) + body cell (heading + description + CTA link).",
+  "usage": "Prominent 2-up feature promotions for major offers or campaigns.",
+  "options": [],
+  "memberVariantIds": ["cards-feature"]
+}

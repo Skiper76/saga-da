@@ -1,0 +1,40 @@
+/*
+ * brand.css — Saga brand design tokens extracted from https://www.saga.co.uk/
+ * Font: Ambit (brand) with Figtree (Google Fonts) as the closest free fallback.
+ */
+:root {
+  /* fonts */
+  --heading-font-family: "Ambit", "Figtree", figtree-fallback, sans-serif;
+  --body-font-family: "Ambit", "Figtree", figtree-fallback, sans-serif;
+
+  /* colors */
+  --background-color: #fff;
+  --text-color: #232323;
+  --link-color: #1e3282;
+  --link-hover-color: #14225a;
+
+  /* brand palette */
+  --brand-blue: #1e3282;
+  --brand-blue-dark: #14225a;
+  --brand-light: #f0f3fa;
+  --brand-champagne: #f6efe4;
+  --brand-teal: #4aa6b5;
+  --brand-orange: #ec7a2f;
+  --brand-lilac: #c9bfe0;
+
+  /* section + light/dark helpers */
+  --light-color: #f0f3fa;
+  --dark-color: #1e3282;
+
+  /* spacing */
+  --section-padding: 40px;
+  --nav-height: 74px;
+
+  /* heading sizes (desktop) */
+  --heading-size-xxl: 48px;
+  --heading-size-xl: 40px;
+  --heading-size-l: 24px;
+  --heading-size-m: 20px;
+  --heading-size-s: 18px;
+  --heading-size-xs: 16px;
+}
