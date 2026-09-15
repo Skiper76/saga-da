@@ -27,9 +27,9 @@ footer .footer a:hover {
   text-decoration: underline;
 }
 
-/* brand strip — SAGA wordmark with the 1951 emblem beneath it (source lockup) */
+/* brand strip — large centred 1951 emblem above, SAGA wordmark left (source layout) */
 footer .footer-brand {
-  padding-bottom: 32px;
+  padding-bottom: 40px;
   border-bottom: 1px solid rgb(255 255 255 / 25%);
 }
 
@@ -37,7 +37,7 @@ footer .footer-brand .default-content-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 28px;
 }
 
 footer .footer-brand p {
@@ -46,17 +46,27 @@ footer .footer-brand p {
 }
 
 footer .footer-brand img {
-  height: 44px;
   width: auto;
 }
 
-/* the Saga wordmark SVG is navy; render it white on the blue footer */
+/* SAGA wordmark — navy SVG rendered white, left-aligned */
+footer .footer-brand p:first-child img {
+  height: 52px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
 footer .footer-brand a img {
   filter: brightness(0) invert(1);
 }
 
+/* 1951 emblem — large, centred above the wordmark */
+footer .footer-brand p:nth-child(2) {
+  order: -1;
+  align-self: center;
+}
+
 footer .footer-brand p:nth-child(2) img {
-  height: 40px;
+  height: 120px;
 }
 
 /* link columns */
@@ -71,8 +81,9 @@ footer .footer-columns {
 }
 
 footer .footer-column > p:first-child {
-  font-weight: 600;
-  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
 
 footer .footer-links ul {
@@ -84,27 +95,39 @@ footer .footer-links ul {
   gap: 12px;
 }
 
-/* social icons */
-/* stylelint-disable-next-line no-descending-specificity */
-footer .footer-links img {
-  width: 32px;
-  height: 32px;
-}
-
+/* social icons — white circular badges (source style) */
 /* stylelint-disable-next-line no-descending-specificity */
 footer .footer-links p:has(img) {
   display: flex;
   gap: 16px;
-  margin-top: 16px;
+  margin-top: 24px;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 footer .footer-links p:has(img) a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #fff;
   line-height: 0;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer-links img {
+  width: 22px;
+  height: 22px;
+
+  /* source icons are white glyphs; darken them to brand blue on the white badge */
+  filter: brightness(0) saturate(100%) invert(13%) sepia(55%) saturate(2500%) hue-rotate(210deg);
 }
 
 footer .footer-links p:has(img) a:hover {
-  opacity: 0.8;
+  opacity: 0.85;
+  transform: translateY(-2px);
 }
 
 /* legal strip */
