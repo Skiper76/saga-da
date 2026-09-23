@@ -35,6 +35,17 @@ export default function transform(hookName, element, payload) {
       '.ot-text-resize',
       // Upscope automated-assistant / chat triage widget (site-shell, not content)
       '.chat-triage',
+      // Breadcrumb trail — site chrome, not authorable content. Left in, its
+      // JS-collapsed markup imports as a malformed <ol> (bare "…", empty <li>,
+      // nested <ol>) that breaks the DA preview HTML→document conversion.
+      'nav.breadcrumb',
+      '.breadcrumb',
+      '.breadcrumbs',
+      'ol.breadcrumb__list',
+      // Decorative marble divider. Its illustrative SVG is ~89KB, over DA's
+      // 40KB per-image limit, which fails the preview (html2md) validation.
+      // Purely ornamental, so drop it.
+      '.marble-divider',
     ]);
 
     // The anniversary banner is a body-level sibling on every page. It is

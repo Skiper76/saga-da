@@ -16,6 +16,14 @@
 export default function parse(element, { document }) {
   const cells = [];
 
+  // Strip non-authorable form chrome that JS injects: per-field validation
+  // messages, recaptcha/alert banners, and status text. Left in, these leak as
+  // raw paragraphs ("Please enter a valid first name", "there has been an
+  // issue…") into the imported content.
+  element.querySelectorAll(
+    '.control-group__error-message, .alert, .recaptcha-error, [class*="error-message"]',
+  ).forEach((n) => n.remove());
+
   // Intro: heading + lead paragraph (rich-text row, single cell)
   const introCell = [];
   const title = element.querySelector('.form-subscribe__title, h1, h2, h3');

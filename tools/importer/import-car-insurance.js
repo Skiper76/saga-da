@@ -62,7 +62,6 @@ const PAGE_TEMPLATE = {
     { id: 'rc10', name: 'faq-my-documents', selector: ['#anchor_Mydocuments'], style: null, blocks: ['accordion-faq'], defaultContent: ['h2'] },
     { id: 'rc11', name: 'faq-make-changes', selector: ['#anchor_Makechanges'], style: null, blocks: ['accordion-faq'], defaultContent: ['h2'] },
     { id: 'rc12', name: 'quote-cta', selector: ['body > main > div.container:nth-of-type(10)'], style: 'champagne', blocks: [], defaultContent: ['h2', 'p'] },
-    { id: 'rc13', name: 'marble-divider', selector: ['body > main > div.marble-divider.marble-divider--sm'], style: null, blocks: [], defaultContent: [] },
     { id: 'rc14', name: 'newsletter-signup', selector: ['body > main > div:nth-of-type(12)'], style: null, blocks: ['form'], defaultContent: ['h2', 'p'] },
     { id: 'rc15', name: 'more-from-saga', selector: ['.card-carousel'], style: null, blocks: ['carousel-product'], defaultContent: ['h2', 'p'] },
   ],
