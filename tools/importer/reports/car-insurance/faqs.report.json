@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://www.saga.co.uk/car-insurance/faqs",
   "path": "car-insurance/faqs",
-  "timestamp": "2026-09-14T16:02:34.345Z",
+  "timestamp": "2026-09-23T15:02:05.265Z",
   "title": "Frequently Asked Questions | Saga Car Insurance",
   "template": "car-insurance",
   "blocks": [
@@ -14,7 +14,6 @@
     "accordion-faq",
     "accordion-faq",
     "accordion-faq",
-    "form",
-    "carousel-product"
+    "form"
   ]
 }

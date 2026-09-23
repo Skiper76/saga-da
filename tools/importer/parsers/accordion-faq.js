@@ -52,6 +52,17 @@ export default function parse(element, { document }) {
     return;
   }
 
+  // Group heading (e.g. "My car insurance cover") lives in .accordion__header
+  // as an <h3>. It's the visible divider between FAQ groups — keep it as a
+  // heading rendered ABOVE the accordion block (section default content).
+  const headingEl = element.querySelector('.accordion__header h3, .accordion__header h2');
+  let heading = null;
+  if (headingEl && headingEl.textContent.trim()) {
+    heading = document.createElement('h3');
+    heading.textContent = headingEl.textContent.trim();
+  }
+
   const block = WebImporter.Blocks.createBlock(document, { name: 'accordion-faq', cells });
   element.replaceWith(block);
+  if (heading) block.before(heading);
 }

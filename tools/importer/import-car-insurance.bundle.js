@@ -139,13 +139,23 @@ var CustomImportScript = (() => {
       element.replaceWith(...element.childNodes);
       return;
     }
+    const headingEl = element.querySelector(".accordion__header h3, .accordion__header h2");
+    let heading = null;
+    if (headingEl && headingEl.textContent.trim()) {
+      heading = document2.createElement("h3");
+      heading.textContent = headingEl.textContent.trim();
+    }
     const block = WebImporter.Blocks.createBlock(document2, { name: "accordion-faq", cells });
     element.replaceWith(block);
+    if (heading) block.before(heading);
   }
 
   // tools/importer/parsers/form.js
   function parse4(element, { document: document2 }) {
     const cells = [];
+    element.querySelectorAll(
+      '.control-group__error-message, .alert, .recaptcha-error, [class*="error-message"]'
+    ).forEach((n) => n.remove());
     const introCell = [];
     const title = element.querySelector(".form-subscribe__title, h1, h2, h3");
     if (title) {
@@ -263,7 +273,18 @@ var CustomImportScript = (() => {
         ".aamIframeLoaded",
         ".ot-text-resize",
         // Upscope automated-assistant / chat triage widget (site-shell, not content)
-        ".chat-triage"
+        ".chat-triage",
+        // Breadcrumb trail — site chrome, not authorable content. Left in, its
+        // JS-collapsed markup imports as a malformed <ol> (bare "…", empty <li>,
+        // nested <ol>) that breaks the DA preview HTML→document conversion.
+        "nav.breadcrumb",
+        ".breadcrumb",
+        ".breadcrumbs",
+        "ol.breadcrumb__list",
+        // Decorative marble divider. Its illustrative SVG is ~89KB, over DA's
+        // 40KB per-image limit, which fails the preview (html2md) validation.
+        // Purely ornamental, so drop it.
+        ".marble-divider"
       ]);
       const template = payload && payload.template;
       const usesAnniversary = template && Array.isArray(template.blocks) && template.blocks.some((b) => b.name === "columns-anniversary");
@@ -373,7 +394,6 @@ var CustomImportScript = (() => {
       { id: "rc10", name: "faq-my-documents", selector: ["#anchor_Mydocuments"], style: null, blocks: ["accordion-faq"], defaultContent: ["h2"] },
       { id: "rc11", name: "faq-make-changes", selector: ["#anchor_Makechanges"], style: null, blocks: ["accordion-faq"], defaultContent: ["h2"] },
       { id: "rc12", name: "quote-cta", selector: ["body > main > div.container:nth-of-type(10)"], style: "champagne", blocks: [], defaultContent: ["h2", "p"] },
-      { id: "rc13", name: "marble-divider", selector: ["body > main > div.marble-divider.marble-divider--sm"], style: null, blocks: [], defaultContent: [] },
       { id: "rc14", name: "newsletter-signup", selector: ["body > main > div:nth-of-type(12)"], style: null, blocks: ["form"], defaultContent: ["h2", "p"] },
       { id: "rc15", name: "more-from-saga", selector: [".card-carousel"], style: null, blocks: ["carousel-product"], defaultContent: ["h2", "p"] }
     ]
