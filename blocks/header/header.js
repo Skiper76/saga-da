@@ -115,8 +115,23 @@ export default async function decorate(block) {
   // load nav as fragment — metadata-independent dual-fetch:
   // /content/nav (localhost / aem up) then /nav (DA/EDS production at site root)
   let fragment = await loadFragment('/content/nav');
-  if (!fragment) fragment = await loadFragment('/nav');
+  let assetBase = '/content/';
+  if (!fragment) {
+    fragment = await loadFragment('/nav');
+    assetBase = '/';
+  }
   if (!fragment) return;
+
+  // The nav authored its logo/icon images with paths relative to the nav
+  // document (e.g. "images/saga-logo.svg"). Relative srcs resolve against the
+  // current page URL, so they 404 on nested routes (e.g. /magazine/x/y).
+  // Rewrite them to absolute paths under the content root.
+  fragment.querySelectorAll('img[src]').forEach((img) => {
+    const src = img.getAttribute('src');
+    if (src && !/^(https?:)?\/\//.test(src) && !src.startsWith('/')) {
+      img.setAttribute('src', `${assetBase}${src}`);
+    }
+  });
 
   // decorate nav DOM
   block.textContent = '';

@@ -298,36 +298,99 @@ main > .section > div {
   padding: 0 24px;
 }
 
-main > .section:first-of-type {
-  margin-top: 0;
+/* space between the nav and the hero */
+body:not(.article) main > .section:first-of-type {
+  margin-top: 32px;
 }
 
-/* homepage hero: stacked image + heading + copy + CTA (matches source) */
-main > .section:first-of-type .default-content-wrapper > p:first-child img {
-  width: 100%;
+/* homepage hero: full-width image with an overlaid white content card.
+ * The wrapper is the section's `> div` (shared max-width:1200 + 24/32px side
+ * padding). Its absolute image/card ignore that padding, so the visible hero
+ * would bleed 24/32px wider than the promo cards below. Inset the background
+ * image and card by that gutter (via inset on the image + margins on the card)
+ * so the hero lines up exactly with the cards' column. */
+body:not(.article) main > .section:first-of-type .default-content-wrapper {
+  position: relative;
+  display: flow-root; /* contain the card's top margin (no margin-collapse) */
+  min-height: 460px;
+  margin-bottom: 40px;
+}
+
+/* image fills the hero as the background layer, rounded, clipped to itself.
+ * Inset left/right by the section's side padding so its edges align with the
+ * promo cards' column (which respect that padding as normal-flow content). */
+body:not(.article) main > .section:first-of-type .default-content-wrapper > p:first-child {
+  position: absolute;
+  inset: 0 24px;
+  z-index: 0;
+  margin: 0;
+  line-height: 0;
   border-radius: 12px;
+  overflow: hidden;
+}
+
+@media (width >= 900px) {
+  body:not(.article) main > .section:first-of-type .default-content-wrapper > p:first-child {
+    inset: 0 32px;
+  }
+}
+
+body:not(.article) main > .section:first-of-type .default-content-wrapper > p:first-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-main > .section:first-of-type .default-content-wrapper > h1 {
-  margin-top: 0.6em;
+/* white card holding the heading, copy and CTA, overlaid top-left.
+ * The card is inset from the hero edges (was the wrapper's 48px padding). */
+body:not(.article) main > .section:first-of-type .default-content-wrapper > h1 {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: min(460px, calc(100% - 96px));
+  margin: 48px 0 0 48px;
+  padding: 36px 36px 20px;
+  background: #fff;
+  border-radius: 12px 12px 0 0;
+  font-weight: 700; /* Ambit Black, matching the promo/feature card titles */
 }
 
-/* hero CTA ("Book now") — render the standalone link as a solid Saga button */
-main > .section:first-of-type .default-content-wrapper > p:last-child > a:only-child {
-  display: inline-block;
-  margin-top: 8px;
-  border-radius: 999px;
-  padding: 14px 32px;
+body:not(.article) main > .section:first-of-type .default-content-wrapper > p:nth-child(3) {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: min(460px, calc(100% - 96px));
+  margin: 0 0 0 48px;
+  padding: 0 36px 24px;
+  background: #fff;
+}
+
+/* CTA row — completes the card and holds the button */
+body:not(.article) main > .section:first-of-type .default-content-wrapper > p:last-child {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: min(460px, calc(100% - 96px));
+  margin: 0 0 48px 48px;
+  padding: 0 36px 36px;
+  background: #fff;
+  border-radius: 0 0 12px 12px;
+}
+
+body:not(.article) main > .section:first-of-type .default-content-wrapper > p:last-child > a:only-child {
+  display: block;
+  border-radius: 4px;
+  padding: 16px 32px;
   background-color: var(--brand-blue);
   color: #fff;
   font-weight: 600;
+  text-align: center;
   text-decoration: none;
   transition: background-color 0.2s;
 }
 
-main > .section:first-of-type .default-content-wrapper > p:last-child > a:only-child:hover {
+body:not(.article) main > .section:first-of-type .default-content-wrapper > p:last-child > a:only-child:hover {
   background-color: var(--brand-blue-dark);
   text-decoration: none;
 }
@@ -337,6 +400,112 @@ main > .section:first-of-type .default-content-wrapper > p:last-child > a:only-c
     padding: 0 32px;
   }
 }
+
+/* section intro heading — teal accent bar + blue title, with a lead-in line.
+ * Applies to a section's default-content h2/h3 that introduces the block below
+ * (e.g. "Latest Articles", "Award-winning service you can trust"). */
+main > .section > .default-content-wrapper > h2,
+main > .section > .default-content-wrapper > h3 {
+  position: relative;
+  margin: 0 0 8px;
+  padding-left: 22px;
+  font-weight: 600;
+}
+
+main > .section > .default-content-wrapper > h2::before,
+main > .section > .default-content-wrapper > h3::before {
+  content: '';
+  position: absolute;
+  top: 0.12em;
+  bottom: 0.12em;
+  left: 0;
+  width: 8px;
+  border-radius: 2px;
+  background-color: #86d0d0;
+}
+
+/* lead-in description under the section heading */
+/* stylelint-disable no-descending-specificity */
+main > .section > .default-content-wrapper > h2 + p,
+main > .section > .default-content-wrapper > h3 + p {
+  /* stylelint-enable no-descending-specificity */
+  max-width: 640px;
+  margin: 0 0 24px;
+  color: var(--text-color);
+}
+
+/* magazine article template — reading-optimised typography.
+ * Applied to pages tagged `template: article` (EDS boilerplate adds body.article).
+ * Constrains the prose column, adds a hero treatment and comfortable rhythm. */
+/* stylelint-disable no-descending-specificity */
+body.article main > .section > .default-content-wrapper {
+  max-width: 760px;
+}
+
+/* article title (h1) */
+body.article main > .section > .default-content-wrapper > h1 {
+  margin-bottom: 0.3em;
+  font-size: var(--heading-font-size-xxl);
+  line-height: 1.15;
+}
+
+/* standfirst — the first paragraph after the title reads as a lead-in */
+body.article main > .section > .default-content-wrapper > h1 + p {
+  margin-bottom: 1.2em;
+  color: #4a4a4a;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+/* hero image — the paragraph holding the first image spans full width, rounded */
+body.article main > .section > .default-content-wrapper > h1 + p + p:has(picture),
+body.article main > .section > .default-content-wrapper > h1 + p + p:has(img) {
+  margin: 0 0 1.6em;
+}
+
+body.article main > .section > .default-content-wrapper picture img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* body headings */
+body.article main > .section > .default-content-wrapper h2 {
+  margin-top: 1.4em;
+  font-size: 30px;
+}
+
+body.article main > .section > .default-content-wrapper h3 {
+  margin-top: 1.2em;
+  font-size: 24px;
+}
+
+body.article main > .section > .default-content-wrapper h4 {
+  margin-top: 1em;
+  color: var(--text-color);
+  font-size: 19px;
+}
+
+/* body copy — generous line-height for long-form reading */
+body.article main > .section > .default-content-wrapper p {
+  margin: 0 0 1.1em;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+/* inline links stay brand-blue and underlined for scannability */
+body.article main > .section > .default-content-wrapper p a:any-link {
+  color: var(--brand-blue);
+  text-decoration: underline;
+}
+
+/* "More tips" style trailing list */
+body.article main > .section > .default-content-wrapper ul {
+  margin: 0 0 1.1em;
+  padding-left: 1.2em;
+  font-size: 19px;
+  line-height: 1.7;
+}
+/* stylelint-enable no-descending-specificity */
 
 /* section metadata */
 main .section.light,
@@ -353,7 +522,7 @@ main .section.dark {
   padding: 40px 0;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
+/* stylelint-disable no-descending-specificity */
 main .section.dark h1,
 main .section.dark h2,
 main .section.dark h3,
@@ -362,6 +531,7 @@ main .section.dark h5,
 main .section.dark h6 {
   color: #fff;
 }
+/* stylelint-enable no-descending-specificity */
 
 /* champagne accent band (e.g. quote CTA) */
 main .section.champagne {

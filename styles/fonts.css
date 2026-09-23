@@ -1,4 +1,39 @@
 /* stylelint-disable max-line-length */
+
+/* Ambit — Saga brand typeface (self-hosted). Weight mapping mirrors saga.co.uk:
+   400→Regular, 500→SemiBold, 600→Bold, 700→Black. */
+@font-face {
+  font-family: Ambit;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/Ambit-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Ambit;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/Ambit-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Ambit;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/Ambit-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Ambit;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/Ambit-Black.woff2') format('woff2');
+}
+
 @font-face {
   font-family: roboto-condensed;
   font-style: normal;

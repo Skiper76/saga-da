@@ -15,6 +15,18 @@ export default async function decorate(block) {
   const fragment = await loadFragment(footerPath);
   if (!fragment) return;
 
+  // The footer authored its logo/social images with paths relative to the
+  // footer document (e.g. "images/saga-logo-white.svg"). Relative srcs resolve
+  // against the current page URL, so they 404 on nested routes (e.g.
+  // /magazine/x/y). Rewrite them to absolute paths under the content root.
+  const assetBase = footerPath.startsWith('/content') ? '/content/' : '/';
+  fragment.querySelectorAll('img[src]').forEach((img) => {
+    const src = img.getAttribute('src');
+    if (src && !/^(https?:)?\/\//.test(src) && !src.startsWith('/')) {
+      img.setAttribute('src', `${assetBase}${src}`);
+    }
+  });
+
   // decorate footer DOM
   block.textContent = '';
   const footer = document.createElement('div');

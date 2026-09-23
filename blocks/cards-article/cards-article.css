@@ -43,9 +43,11 @@
   padding: 16px 24px 8px;
 }
 
-/* the "ARTICLE" tag label — first paragraph, overlaid on the image */
+/* the "ARTICLE" tag label — first paragraph, overlaid on the image.
+ * z-index above the stretched title link so it sits over the image. */
 .cards-article-body p {
   position: absolute;
+  z-index: 2;
   top: 16px;
   left: 9px;
   margin: 0;
@@ -72,7 +74,20 @@
   text-decoration: none;
 }
 
-.cards-article-body h3 a:hover {
+/* stretch the title link across the whole card so the image and card body are
+ * all clickable (the <li> is position: relative to anchor this overlay). */
+.cards-article-body h3 a:any-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.cards-article > ul > li:hover {
+  border-color: var(--brand-blue);
+}
+
+.cards-article > ul > li:hover .cards-article-body h3 a {
   text-decoration: underline;
 }
 
